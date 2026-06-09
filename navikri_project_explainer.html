@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLM Hiring Pipeline — Fresher Recruitment OS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300&family=Epilogue:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede7d8;
+  --ink: #1a1410;
+  --ink2: #3d3428;
+  --muted: #8a7d6b;
+  --border: #d4c9b5;
+  --border2: #c0b49e;
+
+  --auto:    #1a6b3c;
+  --auto-bg: #e8f5ee;
+  --auto-border: #a8d5b8;
+
+  --hybrid:    #7a4f00;
+  --hybrid-bg: #fdf3e3;
+  --hybrid-border: #e8c87a;
+
+  --manual:    #6b1a1a;
+  --manual-bg: #fdeaea;
+  --manual-border: #e8a0a0;
+
+  --accent:  #c94a00;
+  --accent2: #1a4f6b;
+  --gold:    #b8860b;
+
+  --phase-w: 340px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Epilogue', sans-serif;
+  min-height: 100vh;
+}
+
+/* Paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 56px 28px 100px;
+}
+
+/* ═══════════════════════════════
+   HEADER
+═══════════════════════════════ */
+.header {
+  margin-bottom: 52px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 32px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.header-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border2);
+  padding: 5px 12px;
+  border-radius: 3px;
+  background: var(--bg2);
+}
+
+.header-meta {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.header-sub {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════
+   LEGEND
+═══════════════════════════════ */
+.legend {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+  padding: 16px 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--ink2);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.leg-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   PIPELINE
+═══════════════════════════════ */
+.pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* connector between phases */
+.connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  position: relative;
+}
+
+.connector::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: repeating-linear-gradient(180deg, var(--border2) 0, var(--border2) 4px, transparent 4px, transparent 8px);
+  transform: translateX(-50%);
+}
+
+.connector-arrow {
+  width: 28px; height: 28px;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--muted);
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════
+   PHASE BLOCK
+═══════════════════════════════ */
+.phase {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 3px 3px 0 var(--border);
+  animation: slideIn 0.4s ease both;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.phase:nth-child(1)  { animation-delay: 0.04s; }
+.phase:nth-child(3)  { animation-delay: 0.08s; }
+.phase:nth-child(5)  { animation-delay: 0.12s; }
+.phase:nth-child(7)  { animation-delay: 0.16s; }
+.phase:nth-child(9)  { animation-delay: 0.20s; }
+.phase:nth-child(11) { animation-delay: 0.24s; }
+.phase:nth-child(13) { animation-delay: 0.28s; }
+
+.phase-header {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.phase-num {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 26px;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.auto-phase  .phase-num { background: var(--auto-bg);   color: var(--auto);   border-color: var(--auto-border); }
+.hybrid-phase .phase-num { background: var(--hybrid-bg); color: var(--hybrid); border-color: var(--hybrid-border); }
+.manual-phase .phase-num { background: var(--manual-bg); color: var(--manual); border-color: var(--manual-border); }
+
+.phase-title-wrap {
+  padding: 14px 18px;
+}
+
+.phase-type-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.auto-phase  .phase-type-tag { color: var(--auto); }
+.hybrid-phase .phase-type-tag { color: var(--hybrid); }
+.manual-phase .phase-type-tag { color: var(--manual); }
+
+.phase-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.phase-badge-wrap {
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.auto-pct {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.auto-phase  .auto-pct { color: var(--auto); }
+.hybrid-phase .auto-pct { color: var(--hybrid); }
+.manual-phase .auto-pct { color: var(--manual); }
+
+.auto-pct-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-align: right;
+}
+
+/* Phase body */
+.phase-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+@media (max-width: 680px) {
+  .phase-body { grid-template-columns: 1fr; }
+}
+
+.phase-col {
+  padding: 18px 20px;
+}
+
+.phase-col + .phase-col {
+  border-left: 1px solid var(--border);
+}
+
+@media (max-width: 680px) {
+  .phase-col + .phase-col { border-left: none; border-top: 1px solid var(--border); }
+}
+
+.col-heading {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.col-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.phase-col p {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+
+/* Step list */
+.step-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.step-list li {
+  font-size: 12.5px;
+  color: var(--ink2);
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+
+.step-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* Tag pills */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  border: 1px solid;
+  letter-spacing: 0.04em;
+}
+
+.tag-slm    { background: #eef4ff; color: var(--accent2); border-color: #b0c8e8; }
+.tag-human  { background: #fff4ee; color: var(--accent);  border-color: #f0c0a0; }
+.tag-elim   { background: var(--manual-bg); color: var(--manual); border-color: var(--manual-border); }
+.tag-bmark  { background: #fffaee; color: var(--gold); border-color: #e8d090; }
+.tag-score  { background: #f0f8f0; color: var(--auto); border-color: var(--auto-border); }
+
+/* Human review strip */
+.human-strip {
+  background: #fffaee;
+  border-top: 1px solid var(--hybrid-border);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.human-strip-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hybrid);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.human-strip-label::before {
+  content: '👤';
+  font-size: 13px;
+}
+
+.human-strip p {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.5;
+}
+
+/* Automation bar in footer */
+.phase-footer {
+  border-top: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-bar-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.bar-track {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.auto-phase  .bar-fill { background: var(--auto); }
+.hybrid-phase .bar-fill { background: var(--hybrid); }
+.manual-phase .bar-fill { background: var(--manual); }
+
+/* ═══════════════════════════════
+   SCORING LEGEND (bottom)
+═══════════════════════════════ */
+.scoring-wrap {
+  margin-top: 64px;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.scoring-hdr {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 16px 24px;
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scoring-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+}
+
+.score-cell {
+  padding: 20px 22px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.score-cell:last-child { border-right: none; }
+
+.score-wt {
+  font-family: 'Fraunces', serif;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.score-name {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.score-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════
+   CANDIDATE SUMMARY CARD DEMO
+═══════════════════════════════ */
+.demo-section {
+  margin-top: 52px;
+}
+
+.demo-heading {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.demo-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.cand-card {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 3px 3px 0 var(--border);
+}
+
+.cand-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  flex-wrap: wrap;
+}
+
+.cand-init {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.cand-name-wrap .cand-name { font-weight: 700; font-size: 15px; }
+.cand-name-wrap .cand-role { font-size: 12px; color: var(--muted); }
+
+.cand-flags {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.flag {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.flag-bmark { background: #fffaee; color: var(--gold); border-color: #e8d090; }
+.flag-pass  { background: var(--auto-bg); color: var(--auto); border-color: var(--auto-border); }
+
+.cand-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+
+@media (max-width: 640px) {
+  .cand-body { grid-template-columns: 1fr; }
+}
+
+.cand-section {
+  padding: 16px 18px;
+  border-right: 1px solid var(--border);
+}
+
+.cand-section:last-child { border-right: none; }
+
+.csec-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.match-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ink2);
+  margin-bottom: 5px;
+}
+
+.match-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.dot-match   { background: var(--auto); }
+.dot-nomatch { background: var(--manual); }
+.dot-partial { background: var(--hybrid); }
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sc-label { font-size: 12px; color: var(--muted); }
+.sc-val { font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500; }
+
+.mini-bar { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; margin-bottom: 10px; }
+.mini-fill { height: 100%; border-radius: 99px; }
+
+.bmark-reason {
+  background: #fffaee;
+  border: 1px solid #e8d090;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 11px;
+  color: var(--gold);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.cand-footer {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg2);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.comp-score-wrap { display: flex; align-items: baseline; gap: 6px; }
+.comp-score { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 900; color: var(--auto); }
+.comp-label { font-size: 12px; color: var(--muted); }
+
+.action-btns { display: flex; gap: 8px; }
+.btn {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 7px 14px;
+  border-radius: 4px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.btn-approve { background: var(--auto-bg); color: var(--auto); border-color: var(--auto-border); }
+.btn-reject  { background: var(--manual-bg); color: var(--manual); border-color: var(--manual-border); }
+.btn-bmark   { background: #fffaee; color: var(--gold); border-color: #e8d090; }
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+.page-footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 2px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pf-left {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.pf-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pf-stat {
+  text-align: center;
+}
+
+.pf-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--ink);
+  display: block;
+}
+
+.pf-stat-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-label">SLM · Fresher Recruitment OS · v2.0</div>
+      <div class="header-meta">Target: Entry-Level / Freshers<br>Venue: Innovacx, Hyderabad</div>
+    </div>
+    <h1>Intelligent <em>Hiring Pipeline</em><br>Process Documentation</h1>
+    <p class="header-sub">A 7-phase SLM-powered recruitment system designed for fresher hiring. Every phase is documented with automation level, SLM responsibilities, human review checkpoints, scoring logic, and bookmarking controls.</p>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="leg-dot" style="background:var(--auto)"></div> Fully Automated (SLM-driven)</div>
+    <div class="legend-item"><div class="leg-dot" style="background:var(--hybrid)"></div> Hybrid (SLM assists, Human decides)</div>
+    <div class="legend-item"><div class="leg-dot" style="background:var(--manual)"></div> Human-Led (SLM supports)</div>
+    <div class="legend-item"><div class="leg-dot" style="background:var(--gold)"></div> Bookmark / Flag by HR</div>
+    <div class="legend-item"><div class="leg-dot" style="background:#e88"></div> Elimination Gate</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       PHASE 1
+  ══════════════════════════════════════════════════ -->
+  <div class="pipeline">
+  <div class="phase hybrid-phase">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <div class="phase-title-wrap">
+        <div class="phase-type-tag">Hybrid · SLM + HR Setup</div>
+        <div class="phase-title">Job Description Creation & Requirements Gathering</div>
+      </div>
+      <div class="phase-badge-wrap">
+        <div class="auto-pct">70%</div>
+        <div class="auto-pct-label">Automated</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="col-heading">What the SLM does</div>
+        <ul class="step-list">
+          <li>Generates a fresher-friendly JD template — broad skill requirements, flexible experience criteria, emphasis on learning ability and academic background.</li>
+          <li>Pulls <strong>non-negotiable requirements</strong> from three departments: <strong>Deploy Team</strong>, <strong>HR</strong>, and <strong>Project Lead</strong>. These are hard gates — failing any one = auto-elimination.</li>
+          <li>Converts all requirements into a structured scoring rubric with weighted criteria.</li>
+          <li>Publishes JD to job portals and manages inbound applications.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: JD Generator</span>
+          <span class="tag tag-slm">SLM: Rubric Builder</span>
+          <span class="tag tag-slm">SLM: Portal Publish</span>
+        </div>
+      </div>
+      <div class="phase-col">
+        <div class="col-heading">Non-Negotiables collected from</div>
+        <ul class="step-list">
+          <li><strong>Deploy Team</strong> — Technical must-haves (e.g. a specific language, OS knowledge, toolchain familiarity).</li>
+          <li><strong>HR</strong> — Compliance requirements (degree completions, work authorization, joining date flexibility).</li>
+          <li><strong>Project Lead</strong> — Domain-specific minimums (e.g. awareness of a particular methodology, coursework alignment).</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-elim">⊘ Non-Negotiable Gate</span>
+          <span class="tag tag-human">👤 HR final JD approval</span>
+        </div>
+      </div>
+    </div>
+    <div class="human-strip">
+      <div class="human-strip-label">Human Review</div>
+      <p>HR reviews and approves the generated JD, non-negotiable criteria, and scoring rubric before it goes live. Can edit any section.</p>
+    </div>
+    <div class="phase-footer">
+      <span class="footer-bar-label">Automation</span>
+      <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+      <span class="footer-bar-label" style="color:var(--hybrid)">70%</span>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- ══════════════════════════════════════════════════
+       PHASE 2
+  ══════════════════════════════════════════════════ -->
+  <div class="phase auto-phase">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <div class="phase-title-wrap">
+        <div class="phase-type-tag">Fully Automated · SLM-Driven</div>
+        <div class="phase-title">Resume Screening, Scoring & Non-Negotiable Elimination</div>
+      </div>
+      <div class="phase-badge-wrap">
+        <div class="auto-pct">92%</div>
+        <div class="auto-pct-label">Automated</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="col-heading">What the SLM does</div>
+        <ul class="step-list">
+          <li>Parses every incoming resume — extracts skills, academic history, projects, certifications, and experience.</li>
+          <li>Checks each resume against the <strong>non-negotiable list</strong>. Any candidate missing even one non-negotiable is <strong>automatically eliminated</strong> — no human review at this step.</li>
+          <li>For all surviving candidates, scores the resume against the JD rubric and assigns a <strong>Resume Points Score (RPS)</strong> out of 100.</li>
+          <li>Flags academic standouts, strong project portfolios, or notable certificates for easy HR spotting.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: Resume Parser</span>
+          <span class="tag tag-elim">⊘ Non-Neg Elimination</span>
+          <span class="tag tag-score">◈ Resume Points Score</span>
+        </div>
+      </div>
+      <div class="phase-col">
+        <div class="col-heading">Scoring Breakdown (RPS)</div>
+        <ul class="step-list">
+          <li><strong>Skills match</strong> vs JD requirements — highest weight.</li>
+          <li><strong>Academic background</strong> — degree, CGPA, institution tier (fresher-weighted heavily).</li>
+          <li><strong>Projects / Internships</strong> — relevant work, even personal projects count.</li>
+          <li><strong>Certifications & courses</strong> — bonus points for aligned learning.</li>
+          <li><strong>Soft indicators</strong> — leadership roles, clubs, publications.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-score">◈ Points out of 100</span>
+          <span class="tag tag-human">👤 Edge case review</span>
+        </div>
+      </div>
+    </div>
+    <div class="human-strip">
+      <div class="human-strip-label">Human Review</div>
+      <p>HR is notified of any ambiguous or borderline non-negotiable cases (e.g. incomplete info) before final elimination is confirmed.</p>
+    </div>
+    <div class="phase-footer">
+      <span class="footer-bar-label">Automation</span>
+      <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+      <span class="footer-bar-label" style="color:var(--auto)">92%</span>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- ══════════════════════════════════════════════════
+       PHASE 3
+  ══════════════════════════════════════════════════ -->
+  <div class="phase hybrid-phase">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <div class="phase-title-wrap">
+        <div class="phase-type-tag">Hybrid · Human Review + Bookmarking</div>
+        <div class="phase-title">HR Review, Bookmarking & First Human Shortlist</div>
+      </div>
+      <div class="phase-badge-wrap">
+        <div class="auto-pct">45%</div>
+        <div class="auto-pct-label">Automated</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="col-heading">What the SLM presents</div>
+        <ul class="step-list">
+          <li>Presents all scored candidates as a ranked, easy-to-read visual dashboard — sorted by Resume Points Score.</li>
+          <li>Each card shows: score, matched skills, academic highlights, flagged strengths, and any SLM-noted anomalies.</li>
+          <li>Total surviving candidate count is displayed prominently to HR before review begins.</li>
+          <li>SLM pre-highlights candidates with strong academics but moderate skill match as "worth reviewing."</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: Ranked Dashboard</span>
+          <span class="tag tag-slm">SLM: Count Summary</span>
+        </div>
+      </div>
+      <div class="phase-col">
+        <div class="col-heading">Human Actions available</div>
+        <ul class="step-list">
+          <li><strong>Bookmark</strong> any candidate for any reason — e.g. "great CGPA despite skill gap", "interesting project background", "refer to another team."</li>
+          <li><strong>Approve</strong> candidates to move forward.</li>
+          <li><strong>Reject</strong> candidates who don't meet HR's judgment even if they passed the SLM gate.</li>
+          <li>After review, HR is shown the remaining count and can optionally <strong>add a new set of non-negotiables</strong> to further narrow the pool before the next phase.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-bmark">⭐ Bookmark / Flag</span>
+          <span class="tag tag-human">👤 Approve / Reject</span>
+          <span class="tag tag-elim">⊘ Optional new non-neg</span>
+        </div>
+      </div>
+    </div>
+    <div class="human-strip">
+      <div class="human-strip-label">Human Review</div>
+      <p>Full HR control. After all decisions, SLM generates a final Phase 3 list: <strong>Approved</strong>, <strong>Rejected</strong>, and <strong>Bookmarked</strong> — shown as a clean summary before proceeding.</p>
+    </div>
+    <div class="phase-footer">
+      <span class="footer-bar-label">Automation</span>
+      <div class="bar-track"><div class="bar-fill" style="width:45%"></div></div>
+      <span class="footer-bar-label" style="color:var(--hybrid)">45%</span>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- ══════════════════════════════════════════════════
+       PHASE 4
+  ══════════════════════════════════════════════════ -->
+  <div class="phase auto-phase">
+    <div class="phase-header">
+      <div class="phase-num">4</div>
+      <div class="phase-title-wrap">
+        <div class="phase-type-tag">Automated · SLM-Driven</div>
+        <div class="phase-title">MCQ Test Preparation, Approval & Secure Dispatch</div>
+      </div>
+      <div class="phase-badge-wrap">
+        <div class="auto-pct">85%</div>
+        <div class="auto-pct-label">Automated</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="col-heading">What the SLM does</div>
+        <ul class="step-list">
+          <li>Generates a tailored MCQ question paper based on JD requirements — sectioned by domain knowledge, aptitude, verbal reasoning, and role-specific technical questions.</li>
+          <li>Submits question paper to HR / Project Lead for approval before dispatch — no paper goes out without sign-off.</li>
+          <li>Upon approval, sends <strong>automated test invitations</strong> to all approved candidates with venue details: <strong>Innovacx, Hyderabad</strong>, date, time, and secure network instructions.</li>
+          <li>Manages invitations, reminders, and confirmations automatically.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: Paper Generator</span>
+          <span class="tag tag-human">👤 Paper approval</span>
+          <span class="tag tag-slm">SLM: Auto-Invite</span>
+        </div>
+      </div>
+      <div class="phase-col">
+        <div class="col-heading">Test Logistics</div>
+        <ul class="step-list">
+          <li><strong>Venue:</strong> Innovacx, Hyderabad — secured, proctored environment.</li>
+          <li><strong>Network:</strong> Isolated, secured intranet — SLM serves the test on a controlled interface.</li>
+          <li><strong>Sections:</strong> Technical / Domain · Aptitude · Verbal · Role-Specific.</li>
+          <li>Candidates cannot access the test paper outside the venue network.</li>
+          <li>SLM records start time, end time, and submission for every candidate.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: Secure Delivery</span>
+          <span class="tag tag-slm">SLM: Submission Tracker</span>
+        </div>
+      </div>
+    </div>
+    <div class="human-strip">
+      <div class="human-strip-label">Human Review</div>
+      <p>HR and Project Lead must approve the question paper before it is dispatched to candidates. No test goes live without this gate.</p>
+    </div>
+    <div class="phase-footer">
+      <span class="footer-bar-label">Automation</span>
+      <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+      <span class="footer-bar-label" style="color:var(--auto)">85%</span>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- ══════════════════════════════════════════════════
+       PHASE 5
+  ══════════════════════════════════════════════════ -->
+  <div class="phase auto-phase">
+    <div class="phase-header">
+      <div class="phase-num">5</div>
+      <div class="phase-title-wrap">
+        <div class="phase-type-tag">Fully Automated · SLM-Graded</div>
+        <div class="phase-title">MCQ Auto-Grading & Test Points Score</div>
+      </div>
+      <div class="phase-badge-wrap">
+        <div class="auto-pct">95%</div>
+        <div class="auto-pct-label">Automated</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="col-heading">What the SLM does</div>
+        <ul class="step-list">
+          <li>Auto-grades every submitted MCQ paper immediately upon completion.</li>
+          <li>Computes a <strong>Test Points Score (TPS)</strong> per candidate — overall score plus a section-wise breakdown (Technical, Aptitude, Verbal, Role-Specific).</li>
+          <li>Ranks all candidates by TPS and flags section-specific standouts (e.g. candidate scored low overall but excelled in verbal or technical sections).</li>
+          <li>Presents ranked results to HR with section breakdowns for each candidate.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: Auto Grader</span>
+          <span class="tag tag-score">◈ Test Points Score</span>
+          <span class="tag tag-slm">SLM: Section Breakdown</span>
+        </div>
+      </div>
+      <div class="phase-col">
+        <div class="col-heading">Bookmarking at this stage</div>
+        <ul class="step-list">
+          <li>HR reviews the test results dashboard.</li>
+          <li>Can <strong>bookmark</strong> any candidate for a specific section performance — e.g. "low overall but strong verbal" or "high technical, worth tracking."</li>
+          <li>Bookmarks carry a label/reason set by HR and are attached to the candidate's profile for all subsequent phases.</li>
+          <li>HR then makes the final call: who advances to Phase 6 and who is eliminated.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-bmark">⭐ Section Bookmark</span>
+          <span class="tag tag-human">👤 HR decides who advances</span>
+        </div>
+      </div>
+    </div>
+    <div class="human-strip">
+      <div class="human-strip-label">Human Review</div>
+      <p>HR reviews ranked test results, applies bookmarks as needed, and confirms the final list of candidates advancing to Phase 6.</p>
+    </div>
+    <div class="phase-footer">
+      <span class="footer-bar-label">Automation</span>
+      <div class="bar-track"><div class="bar-fill" style="width:95%"></div></div>
+      <span class="footer-bar-label" style="color:var(--auto)">95%</span>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- ══════════════════════════════════════════════════
+       PHASE 6
+  ══════════════════════════════════════════════════ -->
+  <div class="phase manual-phase">
+    <div class="phase-header">
+      <div class="phase-num">6</div>
+      <div class="phase-title-wrap">
+        <div class="phase-type-tag">Human-Led · SLM Summarizes</div>
+        <div class="phase-title">Final Consolidated Candidate Summary & Human Review</div>
+      </div>
+      <div class="phase-badge-wrap">
+        <div class="auto-pct">35%</div>
+        <div class="auto-pct-label">Automated</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="col-heading">What the SLM presents per candidate</div>
+        <ul class="step-list">
+          <li><strong>Resume summary</strong> — graphically presented: matched skills (green), unmatched skills (red), partially matched (amber).</li>
+          <li><strong>Resume Points Score (RPS)</strong> from Phase 2.</li>
+          <li><strong>Test Points Score (TPS)</strong> from Phase 5 with section breakdown.</li>
+          <li><strong>Composite Score</strong> — weighted combination of RPS + TPS.</li>
+          <li>All <strong>bookmarks</strong> from Phase 3 and Phase 5 — displayed with HR's own notes/reasons.</li>
+          <li>SLM visual: skill match radar, section performance bar, bookmark timeline.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: Visual Summary</span>
+          <span class="tag tag-score">◈ Composite Score</span>
+          <span class="tag tag-bmark">⭐ All Bookmarks shown</span>
+        </div>
+      </div>
+      <div class="phase-col">
+        <div class="col-heading">Human Actions at this stage</div>
+        <ul class="step-list">
+          <li>Full <strong>Approve / Reject</strong> control — HR reviews each candidate's full summary card one by one or in bulk.</li>
+          <li>Option to <strong>Bookmark</strong> any candidate again at this stage with a fresh reason.</li>
+          <li>After all decisions, SLM generates a <strong>final three-column list</strong>:
+            <br>— ✅ Approved &nbsp;|&nbsp; ❌ Rejected &nbsp;|&nbsp; ⭐ Bookmarked
+          </li>
+          <li>HR confirms this final list before Phase 7 is triggered.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-human">👤 Approve / Reject / Bookmark</span>
+          <span class="tag tag-human">👤 Final list confirmation</span>
+        </div>
+      </div>
+    </div>
+    <div class="human-strip">
+      <div class="human-strip-label">Human Review</div>
+      <p>This is the primary human decision gate. The SLM only presents — every approve, reject, and bookmark decision is made by HR. No candidate moves to Phase 7 without explicit HR approval.</p>
+    </div>
+    <div class="phase-footer">
+      <span class="footer-bar-label">Automation</span>
+      <div class="bar-track"><div class="bar-fill" style="width:35%"></div></div>
+      <span class="footer-bar-label" style="color:var(--manual)">35%</span>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- ══════════════════════════════════════════════════
+       PHASE 7
+  ══════════════════════════════════════════════════ -->
+  <div class="phase auto-phase">
+    <div class="phase-header">
+      <div class="phase-num">7</div>
+      <div class="phase-title-wrap">
+        <div class="phase-type-tag">Automated · Post Human Approval</div>
+        <div class="phase-title">Automated Call Letter Generation & Dispatch</div>
+      </div>
+      <div class="phase-badge-wrap">
+        <div class="auto-pct">90%</div>
+        <div class="auto-pct-label">Automated</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="col-heading">What the SLM does</div>
+        <ul class="step-list">
+          <li>For every HR-approved candidate, SLM auto-generates a <strong>personalised call letter</strong> — includes candidate name, role, reporting date, venue, documents to carry, and contact details.</li>
+          <li>Dispatches call letters via <strong>automated email</strong> with a confirmation receipt mechanism.</li>
+          <li>Tracks delivery — notifies HR of any undelivered emails.</li>
+          <li>Sends a reminder email 24 hours before the joining/next-step date.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-slm">SLM: Letter Generator</span>
+          <span class="tag tag-slm">SLM: Auto Email Dispatch</span>
+          <span class="tag tag-slm">SLM: Delivery Tracker</span>
+        </div>
+      </div>
+      <div class="phase-col">
+        <div class="col-heading">Human controls</div>
+        <ul class="step-list">
+          <li>HR reviews and approves the <strong>call letter template</strong> before the first batch goes out.</li>
+          <li>HR can add a personal note or attachment (e.g. onboarding document) to the template.</li>
+          <li>Dispatch does <strong>not</strong> begin until HR gives final go-ahead.</li>
+          <li>HR receives a <strong>dispatch report</strong> — who was emailed, when, and delivery status.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag-human">👤 Template approval</span>
+          <span class="tag tag-human">👤 Final dispatch go-ahead</span>
+          <span class="tag tag-slm">SLM: Dispatch Report</span>
+        </div>
+      </div>
+    </div>
+    <div class="human-strip">
+      <div class="human-strip-label">Human Review</div>
+      <p>HR approves the call letter template and gives the final go-ahead for dispatch. SLM handles the rest — sending, tracking, and reminders.</p>
+    </div>
+    <div class="phase-footer">
+      <span class="footer-bar-label">Automation</span>
+      <div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+      <span class="footer-bar-label" style="color:var(--auto)">90%</span>
+    </div>
+  </div>
+  </div><!-- /pipeline -->
+
+  <!-- SCORING TABLE -->
+  <div class="scoring-wrap" style="margin-top:64px">
+    <div class="scoring-hdr">◈ Candidate Scoring System</div>
+    <div class="scoring-body">
+      <div class="score-cell">
+        <div class="score-wt" style="color:var(--accent2)">50 pts</div>
+        <div class="score-name">Resume Points Score (RPS)</div>
+        <div class="score-desc">Skills match, academic record, projects, certifications. Freshers weighted heavily on academics and learning indicators. Computed in Phase 2.</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-wt" style="color:var(--auto)">50 pts</div>
+        <div class="score-name">Test Points Score (TPS)</div>
+        <div class="score-desc">MCQ performance across Technical, Aptitude, Verbal, and Role-Specific sections. Section-wise breakdown available. Computed in Phase 5.</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-wt" style="color:var(--gold)">+Flag</div>
+        <div class="score-name">Bookmarks / Flags</div>
+        <div class="score-desc">HR-applied at Phase 3 and Phase 5. Not a numeric score — a qualitative override flag that keeps a candidate visible despite lower scores, with HR's reason attached.</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-wt" style="color:var(--manual)">100 pts</div>
+        <div class="score-name">Composite Score</div>
+        <div class="score-desc">RPS + TPS combined. Presented in Phase 6 alongside bookmarks for final HR decision-making. The number guides, but the human decides.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CANDIDATE SUMMARY DEMO -->
+  <div class="demo-section">
+    <div class="demo-heading">Sample Candidate Summary Card (Phase 6 view)</div>
+    <div class="demo-sub">This is what HR sees for each candidate during the final review in Phase 6.</div>
+
+    <div class="cand-card">
+      <div class="cand-top">
+        <div class="cand-init">PS</div>
+        <div class="cand-name-wrap">
+          <div class="cand-name">Priya Sharma</div>
+          <div class="cand-role">Applied for: Junior Software Developer · B.Tech CSE, 2024 Batch</div>
+        </div>
+        <div class="cand-flags">
+          <div class="flag flag-bmark">⭐ Bookmarked — Phase 3</div>
+          <div class="flag flag-pass">✓ Non-Neg Passed</div>
+        </div>
+      </div>
+
+      <div class="cand-body">
+        <div class="cand-section">
+          <div class="csec-label">Resume Match Summary</div>
+          <div class="match-item"><div class="match-dot dot-match"></div>Python — Matched</div>
+          <div class="match-item"><div class="match-dot dot-match"></div>SQL — Matched</div>
+          <div class="match-item"><div class="match-dot dot-partial"></div>REST APIs — Partial</div>
+          <div class="match-item"><div class="match-dot dot-nomatch"></div>Docker — Not found</div>
+          <div class="match-item"><div class="match-dot dot-match"></div>CGPA 8.9 / 10 — Strong</div>
+          <div class="bmark-reason">⭐ Phase 3 note: "Exceptional CGPA & ML project — bookmarked despite Docker gap"</div>
+        </div>
+
+        <div class="cand-section">
+          <div class="csec-label">Score Breakdown</div>
+          <div class="score-row"><span class="sc-label">Resume Score (RPS)</span><span class="sc-val" style="color:var(--accent2)">74/100</span></div>
+          <div class="mini-bar"><div class="mini-fill" style="width:74%;background:var(--accent2)"></div></div>
+          <div class="score-row"><span class="sc-label">Test — Technical</span><span class="sc-val">18/25</span></div>
+          <div class="mini-bar"><div class="mini-fill" style="width:72%;background:var(--auto)"></div></div>
+          <div class="score-row"><span class="sc-label">Test — Verbal</span><span class="sc-val">23/25</span></div>
+          <div class="mini-bar"><div class="mini-fill" style="width:92%;background:var(--auto)"></div></div>
+          <div class="score-row"><span class="sc-label">Test — Aptitude</span><span class="sc-val">16/25</span></div>
+          <div class="mini-bar"><div class="mini-fill" style="width:64%;background:var(--hybrid)"></div></div>
+          <div class="bmark-reason">⭐ Phase 5 note: "Top verbal score in cohort — strong communicator"</div>
+        </div>
+
+        <div class="cand-section">
+          <div class="csec-label">Test Points Score (TPS)</div>
+          <div class="score-row"><span class="sc-label">Overall TPS</span><span class="sc-val" style="color:var(--auto)">57/100</span></div>
+          <div class="mini-bar"><div class="mini-fill" style="width:57%;background:var(--auto)"></div></div>
+          <br>
+          <div class="csec-label">Bookmarks Summary</div>
+          <div class="flag flag-bmark" style="margin-bottom:6px;display:inline-flex">⭐ Phase 3 — Academic strength</div><br>
+          <div class="flag flag-bmark" style="margin-top:4px;display:inline-flex">⭐ Phase 5 — Top verbal section</div>
+        </div>
+      </div>
+
+      <div class="cand-footer">
+        <div class="comp-score-wrap">
+          <div class="comp-score">65.5</div>
+          <div class="comp-label">/ 100 Composite Score</div>
+        </div>
+        <div class="action-btns">
+          <button class="btn btn-approve">✓ Approve</button>
+          <button class="btn btn-bmark">⭐ Bookmark</button>
+          <button class="btn btn-reject">✕ Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <div class="page-footer">
+    <div class="pf-left">SLM Fresher Hiring OS · v2.0 · 7 Phases · Innovacx Hyderabad</div>
+    <div class="pf-stats">
+      <div class="pf-stat">
+        <span class="pf-stat-num">7</span>
+        <span class="pf-stat-label">Phases</span>
+      </div>
+      <div class="pf-stat">
+        <span class="pf-stat-num">5</span>
+        <span class="pf-stat-label">Human Gates</span>
+      </div>
+      <div class="pf-stat">
+        <span class="pf-stat-num">3</span>
+        <span class="pf-stat-label">Dept Non-Negs</span>
+      </div>
+      <div class="pf-stat">
+        <span class="pf-stat-num">2</span>
+        <span class="pf-stat-label">Score Dims</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
